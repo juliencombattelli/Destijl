@@ -63,7 +63,7 @@ int sendToUI(char* typeMessage, const void * data=NULL);
  * et retourne par référence le type du message (DMB,ARN,POS), ainsi que la data correspondante.
  * retourne la longueur de la chaine reçu.
  */
-int mesFromUI(char *typeMessage, char *data);
+int receptionFromUI(char *typeMessage, char *data);
 
 
 #endif // TCPSERVER_H

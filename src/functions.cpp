@@ -77,7 +77,7 @@ void communiquer(void *arg) {
     rt_mutex_release(&mutexEtat);
     
     while(datasize > 0) {
-        datasize = mesFromUI(header, data);
+        datasize = receptionFromUI(header, data);
         
         if (strcmp(header, DMB) == 0) {
             printf("EVENEMENT DUMBER DETECTE AVEC LE MESSAGE :%s \n", data);

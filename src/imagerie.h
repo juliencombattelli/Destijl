@@ -1,10 +1,9 @@
 #ifndef IMAGERIE_H
 #define IMAGERIE_H
+#include <raspicam/raspicam_cv.h>
+#include "opencv2/imgproc/imgproc.hpp"
 #include <unistd.h>
 #include <math.h>
-
-#include "../include/opencv2/imgproc/imgproc.hpp"
-#include "../include/raspicam/raspicam_cv.h"
 
 #define WIDTH 640 //1280 1024 640
 #define HEIGHT 480 // 960 768 480
@@ -24,33 +23,32 @@ struct  position {
 };
 
 /*
- * def : detectPosition detecte la position des des triangles dans une image d'entr√©e (imgInput).
- * Il d√©coupe √© galement l'image en cas d'element de type Arene pass√© en param√©tre.
- * La modification se fait sur imgOutput. La fonction retourne le nombre de triangle trouv√©.
- * La position de chaque triangle est stock√© dans un tableau de position pass√© par r√©f√©rence.
- * La position est relative √† la resolution de l'image initial (640*480)
+ * def : detectPosition detecte la position des triangles dans une image d'entrÈe (imgInput).
+ * Il dÈcoupe Ègalement l'image en cas d'element de type Arene passÈ en paramËtre.
+ * La modification se fait sur imgOutput. La fonction retourne le nombre de triangle trouvÈ.
+ * La position de chaque triangle est stockÈ dans un tableau de position passÈ par pointeur.
+ * La position est relative ‡† la resolution de l'image initial (640*480)
  * Ex : Image monImage; position positionRobot[20];
- *      detectPosition(&monImage,&monImage, positionRobot);
+ *      detectPosition(&monImage, positionRobot);
  */
 int detectPosition(Image *imgInput, position *posTriangle, Arene * monArene = NULL);
 
 
 /*
- * def : getImg capture une image avec la camera pass√© en entr√©e.
- * La camera doit avoir √©t√© ouverte. (cf openCamera)
+ * def : getImg capture une image avec la camera passÈ en entrÈe.
+ * La camÈra doit avoir Ítre ouverte. (cf openCamera)
  * Ex : Image monImage;
  *      Camera rpiCam;
  *      openCamera(&rpiCam);
  *      getImg(&rpiCam, &monImage);
  */
-
 void getImg(RaspiCam_Cv *Camera, Image * monImage);
 
 
 
 /*
- * def : detectArena : retourne 0 si une anrene est detect√©, et -1 si aucune arrene n'est trouv√©.
- * Les coordonn√©e de l'arene est retourn√© par r√©f√©rence.
+ * def : detectArena : retourne 0 si une arene est detectÈe, et -1 si aucune arene n'est trouvÈe.
+ * Les coordonnÈes de l'arene sont retournÈes par pointeur.
  * Ex : Arene monArene;
  *      if(detectArena(&imageA, &monArene)==0)
  *      {

@@ -101,15 +101,9 @@ int detectPosition(Image *imgInput, position *posTriangle, Arene * monArene) // 
     Image imgTraitment;
 
     if(monArene==NULL)
-    {
-
         imgTraitment=imgInput->clone();
-    }
     else
-    {
         cropArena(imgInput,&imgTraitment, monArene);
-    }
-
 
     cvtColor(imgTraitment,imgTraitment,CV_RGB2GRAY);
     threshold(imgTraitment,imgTraitment,128,255,CV_THRESH_BINARY);
@@ -135,13 +129,13 @@ int detectPosition(Image *imgInput, position *posTriangle, Arene * monArene) // 
             {
                a.x += monArene->x;
                a.y += monArene->y;
-	       b.x += monArene->x;
+               b.x += monArene->x;
                b.y += monArene->y;
                c.x += monArene->x;
                c.y += monArene->y;		    
             }
 		
-	    center.x = (a.x + b.x + c.x)/3;
+            center.x = (a.x + b.x + c.x)/3;
             center.y = (a.y + b.y + c.y)/3;
 
             posTriangle[nbrTriangle].center=center;

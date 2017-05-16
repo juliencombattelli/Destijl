@@ -82,15 +82,6 @@ int lolReceive(char *data)
     return result;
 }
 
-int mesFromUI(char *typeMessage, char *data)
-{
-    char buffer[20];
-    int tBuffer = lolReceive(buffer);
-    sscanf(buffer,"%3s:%s %*s", typeMessage, data);
-    return tBuffer;
-}
-
-
 int serverSend(const void *data,int dataLength)
 {
     if( send(csock , data , dataLength, 0) != dataLength)
@@ -101,8 +92,6 @@ int serverSend(const void *data,int dataLength)
 
     return true;
 }
-
-
 
 // SERVER CLOSE //
 
@@ -153,4 +142,12 @@ int sendToUI(char* typeMessage, const void * data)
     {
         return -1;
     }
+}
+
+int receptionFromUI(char *typeMessage, char *data)
+{
+    char buffer[20];
+    int tBuffer = lolReceive(buffer);
+    sscanf(buffer,"%3s:%s %*s", typeMessage, data);
+    return tBuffer;
 }

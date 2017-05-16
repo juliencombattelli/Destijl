@@ -1,7 +1,5 @@
 #include "serial.h"
 
-
-
 int fd;
 
 int robotOpenCom(const char * path)
@@ -120,17 +118,16 @@ int readRobot(void)
         msg[taille-2] = 0;
         if(checksum!=checkSumGO(msg))
         {
-            return -4;
+            return ROBOT_CHEKSUM;
         }
         else
         {
             switch(msg[0])
             {
-                case 'O' :  return 0;
+                case 'O' : return 0;
                 case 'E' : return ROBOT_ERROR;
                 case 'C' : return ROBOT_UKNOW_CMD;
-                default:
-                    return atoi(&msg[0]);
+                default :  return atoi(&msg[0]);
             }
         }
     }
@@ -138,14 +135,12 @@ int readRobot(void)
     {
         return ROBOT_TIMED_OUT;
     }
-
 }
 
 int robotCmd(char cmd, char * arg)
 {
     sendCmd(cmd,arg);
     return readRobot();
-
 }
 
 int robotCloseCom(void)

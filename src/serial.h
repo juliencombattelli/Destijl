@@ -13,25 +13,25 @@
 #include <stdlib.h>
 
 
-#define PING 'p'
-#define BACKIDLE 'r'
-#define WITH_WD  'W'
-#define RELOAD 'w'
-#define GETVBAT 'v'
-#define GETBUSY 'b'
-#define WITHOUT_WD 'u'
-#define SETMOVE 'M'
-#define SETTURN 'T'
-#define GOFORWARD 'F'
-#define GOBACK 'B'
-#define TURNLEFT 'L'
-#define TURNRIGHT 'R'
-#define STOPMOVE 'S'
+#define PING 		'p'
+#define BACKIDLE 	'r'
+#define WITH_WD  	'W'
+#define RELOAD 		'w'
+#define GETVBAT 	'v'
+#define GETBUSY 	'b'
+#define WITHOUT_WD 	'u'
+#define SETMOVE 	'M'
+#define SETTURN 	'T'
+#define GOFORWARD 	'F'
+#define GOBACK 		'B'
+#define TURNLEFT 	'L'
+#define TURNRIGHT 	'R'
+#define STOPMOVE 	'S'
 
 #define ROBOT_TIMED_OUT -3
 #define ROBOT_UKNOW_CMD -2
-#define ROBOT_ERROR -1
-#define ROBOT_CHEKSUM -4
+#define ROBOT_ERROR 	-1
+#define ROBOT_CHEKSUM 	-4
 
 #define serialPort "/dev/ttyS0"
 
