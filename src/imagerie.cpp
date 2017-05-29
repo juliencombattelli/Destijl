@@ -182,6 +182,6 @@ float calculAngle(position * positionRobot) // position en entree
     float a = positionRobot->direction.x - positionRobot->center.x;
     float b = positionRobot->direction.y - positionRobot->center.y ;
     float angle = atan2(b,a);
-    return (angle*180)/3.14;
+    return angle * 180.f/M_PI;
 
 }
