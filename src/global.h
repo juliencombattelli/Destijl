@@ -17,6 +17,8 @@
 
 #include "includes.h"
 
+#define START_MODE WITHOUT_WD
+
 /* @descripteurs des tâches */
 extern RT_TASK tServeur;
 extern RT_TASK tconnect;
