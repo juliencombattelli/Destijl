@@ -10,16 +10,21 @@ RT_TASK tServeur;
 RT_TASK tconnect;
 RT_TASK tmove;
 RT_TASK tenvoyer;
+RT_TASK tvideo;
+RT_TASK tbattery;
+RT_TASK tWatchdog;
 
 RT_MUTEX mutexEtat;
 RT_MUTEX mutexMove;
 
 RT_SEM semConnecterRobot;
+RT_SEM semConnecterServeur;
 
 RT_QUEUE queueMsgGUI;
+RT_QUEUE queueMsgRobot;
 
-int etatCommMoniteur = 1;
-int etatCommRobot = 1;
+int etatCommMoniteur = -1; //initialisation à erreur
+int etatCommRobot = -1;    //initialisation à erreur
 /*DRobot *robot;
 DMovement *move;
 DServer *serveur;
