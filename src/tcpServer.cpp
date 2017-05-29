@@ -24,11 +24,13 @@ int serverOpen(int PORT)
 {
     /* Création d'une socket */
     sock = socket(AF_INET, SOCK_STREAM, 0);
+    int enable = 1;
 
     /* Si la socket est valide */
     if(sock != INVALID_SOCKET)
     {
         printf("Socket : %d is now open using TCP/IP mod\n", sock);
+        setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(enable));
 
         /* Configuration */
         ssin.sin_addr.s_addr = htonl(INADDR_ANY);  /* Adresse IP automatique */
@@ -98,8 +100,8 @@ int serverSend(const void *data,int dataLength)
 int serverClose(void)
 {
     /* Fermeture de la socket client et de la socket serveur */
-    shutdown(csock,1);
-    shutdown(sock,1);
+    close(csock);
+    close(sock);
 
     printf("TCP Server Close\n");
 
@@ -137,6 +139,13 @@ int sendToUI(char* typeMessage, const void * data)
         sprintf(buffer, "ACK%sTRAME",(const char*)data);
         serverSend(buffer,strlen(buffer));
         return 0;
+    }
+    else if ((string)typeMessage == BAT)
+    {
+    	char buffer[50];
+		sprintf(buffer, "BAT%sTRAME",(const char*)data);
+		serverSend(buffer,strlen(buffer));
+		return 0;
     }
     else
     {
