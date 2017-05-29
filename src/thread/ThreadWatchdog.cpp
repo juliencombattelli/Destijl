@@ -19,18 +19,18 @@ void threadWatchdog(void* arg)
 		perror("erreur lors du lancement du thread\n");
 	else
 	{
-		while(m_exit == false)
+		while(exitApplication == false)
 		{
 			rt_task_wait_period(NULL);
 
-			int tmpEtat = -1;
-			if(rt_mutex_acquire(&mutexEtat, TM_INFINITE) != 0)
+			int tmpEtat = STATUS_ERR;
+			if(rt_mutex_acquire(&mutexEtat, TM_INFINITE) != STATUS_OK)
 				perror("erreur lors de la prise du mutexEtat\n");
 			else
 			{
 				tmpEtat = etatCommRobot;
 
-				if(rt_mutex_release(&mutexEtat) != 0)
+				if(rt_mutex_release(&mutexEtat) != STATUS_OK)
 					perror("erreur lors de la libération du mutexEtat\n");
 			}
 
@@ -38,13 +38,13 @@ void threadWatchdog(void* arg)
 
 			int status = robotCmd(RELOAD);
 
-			if(rt_mutex_acquire(&mutexEtat, TM_INFINITE) != 0)
+			if(rt_mutex_acquire(&mutexEtat, TM_INFINITE) != STATUS_OK)
 				perror("erreur lors de la prise du mutexEtat\n");
 			else
 			{
 				etatCommRobot = status;
 
-				if(rt_mutex_release(&mutexEtat) != 0)
+				if(rt_mutex_release(&mutexEtat) != STATUS_OK)
 					perror("erreur lors de la libération du mutexEtat\n");
 			}
 		}

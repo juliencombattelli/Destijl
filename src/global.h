@@ -19,6 +19,10 @@
 
 #define START_MODE WITHOUT_WD
 
+/* @Status */
+#define STATUS_OK 0
+#define STATUS_ERR -1
+
 /* @descripteurs des tÃ¢ches */
 extern RT_TASK tServeur;
 extern RT_TASK tconnect;
@@ -43,7 +47,7 @@ extern RT_QUEUE queueMsgRobot;
 /* @variables partagées */
 extern int etatCommMoniteur;
 extern int etatCommRobot;
-extern bool m_exit;
+extern bool exitApplication;
 
 /* @constantes */
 extern int MSG_QUEUE_SIZE;

@@ -2,7 +2,7 @@
  * ThreadMove.h
  *
  *  Created on: 29 mai 2017
- *      Author: guill
+ *      Author: guillaume sarthou
  */
 
 #ifndef SRC_THREAD_THREADMOVE_H_

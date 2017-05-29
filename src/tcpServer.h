@@ -27,6 +27,8 @@
 #define ACK "ACK" // Message d'information concernant la derniére commande
 #define DMB "DMB"
 
+#define CLOSE	'C'
+
 #define INVALID_SOCKET -1
 #define SOCKET_ERROR -1
 #define closesocket(param) close(param)

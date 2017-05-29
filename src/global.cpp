@@ -25,9 +25,9 @@ RT_QUEUE queueMsgRobot;
 
 int etatCommMoniteur = -1; //initialisation à erreur
 int etatCommRobot = -1;    //initialisation à erreur
-bool m_exit = false;
+bool exitApplication = false;
 
-int MSG_QUEUE_SIZE = 10;
+int MSG_QUEUE_SIZE = 20;
 
 int PRIORITY_TSERVEUR = 30;
 int PRIORITY_TCONNECT = 35;

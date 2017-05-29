@@ -2,7 +2,7 @@
  * ThreadWatchdog.h
  *
  *  Created on: 29 mai 2017
- *      Author: guill
+ *      Author: julien Combattelli
  */
 
 #ifndef SRC_THREAD_THREADWATCHDOG_H_

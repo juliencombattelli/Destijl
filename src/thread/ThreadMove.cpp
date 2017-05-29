@@ -17,7 +17,7 @@ void threadMove(void* arg)
 	printf("=> threadMove create\n");
 	void *msg;
 
-	if(rt_queue_bind(&queueMsgRobot,"queueMsgRobot",TM_INFINITE) != 0)
+	if(rt_queue_bind(&queueMsgRobot,"queueMsgRobot",TM_INFINITE) != STATUS_OK)
 		perror("bind queue error\n");
 
 	printf("threadMove initialise\n");
@@ -31,15 +31,15 @@ void threadMove(void* arg)
 			rt_queue_free(&queueMsgRobot,msg);
 			break;
 		}
-		int etat = -1;
+		int etat = STATUS_ERR;
 
 		//Zone critique
-		if(rt_mutex_acquire(&mutexEtat, TM_INFINITE) != 0)
+		if(rt_mutex_acquire(&mutexEtat, TM_INFINITE) != STATUS_OK)
 			perror("erreur lors de la prise du mutexEtat\n");
 		else
 		{
 			etat = etatCommRobot;
-			if(rt_mutex_release(&mutexEtat) != 0)
+			if(rt_mutex_release(&mutexEtat) != STATUS_OK)
 				perror("erreur lors de la liberation du mutexEtat\n");
 		}
 		//fin de zone critique
@@ -49,13 +49,13 @@ void threadMove(void* arg)
 			printf("send %s to robot\n", (char*)msg);
 			int err = robotCmd(((char*)msg)[0]);
 
-			if(rt_mutex_acquire(&mutexEtat, TM_INFINITE) != 0)
+			if(rt_mutex_acquire(&mutexEtat, TM_INFINITE) != STATUS_OK)
 				perror("erreur lors de la prise du mutexEtat\n");
 			else
 			{
 				etatCommRobot = err;
 
-				if(rt_mutex_release(&mutexEtat) != 0)
+				if(rt_mutex_release(&mutexEtat) != STATUS_OK)
 					perror("erreur lors de la libération du mutexEtat\n");
 			}
 		}

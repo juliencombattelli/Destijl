@@ -18,7 +18,7 @@ void threadEnvoyer(void *arg)
 
 	void *msg;
 
-	if(rt_queue_bind(&queueMsgGUI,"queueMsgGUI",TM_INFINITE) != 0)
+	if(rt_queue_bind(&queueMsgGUI,"queueMsgGUI",TM_INFINITE) != STATUS_OK)
 		perror("bind queue error\n");
 
 	printf("threadEnvoyer initialise\n");
