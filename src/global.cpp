@@ -25,14 +25,14 @@ RT_QUEUE queueMsgRobot;
 
 int etatCommMoniteur = -1; //initialisation à erreur
 int etatCommRobot = -1;    //initialisation à erreur
-/*DRobot *robot;
-DMovement *move;
-DServer *serveur;
-*/
+bool m_exit = false;
 
 int MSG_QUEUE_SIZE = 10;
 
 int PRIORITY_TSERVEUR = 30;
-int PRIORITY_TCONNECT = 20;
-int PRIORITY_TMOVE = 10;
-int PRIORITY_TENVOYER = 25;
+int PRIORITY_TCONNECT = 35;
+int PRIORITY_TMOVE = 45;
+int PRIORITY_TENVOYER = 44;
+int PRIORITY_TVIDEO = 43;
+int PRIORITY_TBATTERY = 34;
+int PRIORITY_TWATCHDOG = 99;

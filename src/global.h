@@ -38,12 +38,10 @@ extern RT_SEM semConnecterServeur;
 extern RT_QUEUE queueMsgGUI;
 extern RT_QUEUE queueMsgRobot;
 
-/* @variables partagÃ©es */
+/* @variables partagées */
 extern int etatCommMoniteur;
 extern int etatCommRobot;
-/*extern DServer *serveur;
-extern DRobot *robot;
-extern DMovement *move;*/
+extern bool m_exit;
 
 /* @constantes */
 extern int MSG_QUEUE_SIZE;
@@ -51,6 +49,10 @@ extern int PRIORITY_TSERVEUR;
 extern int PRIORITY_TCONNECT;
 extern int PRIORITY_TMOVE;
 extern int PRIORITY_TENVOYER;
+extern int PRIORITY_TVIDEO;
+extern int PRIORITY_TBATTERY;
+extern int PRIORITY_TWATCHDOG;
+
 
 #endif /* GLOBAL_H */
 
