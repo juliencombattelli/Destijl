@@ -32,6 +32,7 @@
 #define ROBOT_UKNOW_CMD -2
 #define ROBOT_ERROR 	-1
 #define ROBOT_CHEKSUM 	-4
+#define ROBOT_OK		0
 
 #define serialPort "/dev/ttyS0"
 
